@@ -16,6 +16,10 @@ entryPoints:
       respondingTimeouts:
         readTimeout: "3600"
         idleTimeout: "3600"
+
+api:
+  insecure: true
+  dashboard: true
   
 accessLog: {}
 
