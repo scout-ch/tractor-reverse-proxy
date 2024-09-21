@@ -12,7 +12,7 @@ services:
       - "./config:/etc/traefik"
     networks:
       - default
-      - portainer-proxy
+      - reverse-proxy
     labels:
       - "traefik.http.routers.portainer.rule=Host(`${PORTAINER_HOSTNAME:?}`)"
       - "traefik.http.routers.portainer.entrypoints=https"
