@@ -26,4 +26,5 @@ volumes:
 networks:
   default:
   portainer-proxy:
+    name: portainer-proxy
     internal: true
