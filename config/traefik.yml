@@ -29,5 +29,7 @@ providers:
     network: "docker-proxy"
     exposedByDefault: false
     allowEmptyServices: true
+    constraints:
+      - "Label(`traefik.enable`, `true`) || "Label(`io.portainer.server`, `true`)"
   file:
     directory: "/etc/traefik/dynamic"
