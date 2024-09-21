@@ -20,6 +20,7 @@
   "prHourlyLimit": 0,
   "rebaseWhen": "behind-base-branch",
   "labels": ["renovate-bot"],
+  "ignoreTests": true,
   "osvVulnerabilityAlerts": true,
   "dependencyDashboardOSVVulnerabilitySummary": "all"
 }
