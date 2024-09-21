@@ -23,5 +23,4 @@ volumes:
 networks:
   default:
   reverse-proxy:
-    name: reverse-proxy
-    internal: true
+    external: true
