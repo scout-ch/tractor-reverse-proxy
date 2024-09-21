@@ -1,7 +1,0 @@
-{
-    email {$ACME_EMAIL}
-}
-
-{$PORTAINER_HOSTNAME} {
-    reverse_proxy portainer:9000
-}

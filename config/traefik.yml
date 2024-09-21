@@ -1,0 +1,33 @@
+entryPoints:
+  http:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: https
+          scheme: https
+  https:
+    address: ":443"
+    http:
+      tls:
+        certResolver: letsencrypt
+    http3: {}
+    transport:
+      respondingTimeouts:
+        readTimeout: "3600"
+        idleTimeout: "3600"
+  
+accessLog: {}
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      tlsChallenge: {}
+      storage: "/letsencrypt/acme.json"
+providers:
+  docker:
+    network: "docker-proxy"
+    exposedByDefault: false
+    allowEmptyServices: true
+  file:
+    directory: "/etc/traefik/dynamic"

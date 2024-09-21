@@ -1,9 +1,9 @@
-# 🚜 Tractor Portainer Proxy
+# 🚜 Tractor Reverse Proxy
 
-This repository is a helper setup to augment a Jelastic Docker native environment with a Portainer proxy. This is useful if you want the Portainer UI to be accessible via a subdomain, e.g. `portainer.yourdomain.com`.
+This repository is a setup to augment a Jelastic Docker native environment with a reverse proxy.
 
 > [!NOTE]  
-> This setup will **not** proxy containers you deploy through portainer, only the portainer UI itself.
+> This is also useful if you want the Portainer UI to be accessible via a subdomain, e.g. `portainer.yourdomain.com`. Check the docker labels in the `docker-compose.yml` file.
 
 ## Usage
 
@@ -14,6 +14,12 @@ Then setup the following environment variables:
 
 ## Note about networks
 
-The compose file in this repository creates a new network called `portainer-proxy`. You then need to join the portainer service to this network through the UI.
+The compose file in this repository creates a new network called `reverse-proxy`. You then need to join the portainer service to this network through the UI.
 
-The `default` network is required to allow caddy to obtain TLS certificates.
+The `default` network is required to allow the proxy to obtain TLS certificates.
+
+## Explain usage of webhooks vs polling
+
+You can either set up the stack to poll for changes in the repository, or you can set up a webhook in the repository to trigger a new deployment. See the following links:
+- https://docs.portainer.io/user/docker/stacks/webhooks
+- https://docs.github.com/en/webhooks/using-webhooks/creating-webhooks (the default settings are fine. Portainer just needs the url to be called, it doesn't care about the payload)
