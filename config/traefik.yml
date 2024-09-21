@@ -17,10 +17,6 @@ entryPoints:
         readTimeout: "3600"
         idleTimeout: "3600"
 
-api:
-  insecure: true
-  dashboard: true
-  
 accessLog: {}
 
 certificatesResolvers:
@@ -33,6 +29,5 @@ providers:
     network: "docker-proxy"
     exposedByDefault: false
     allowEmptyServices: true
-    constraints: "Label(`traefik.enable`, `true`) || Label(`io.portainer.server`, `true`)"
   file:
     directory: "/etc/traefik/dynamic"
