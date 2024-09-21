@@ -16,6 +16,7 @@ services:
       - ACME_EMAIL=${ACME_EMAIL:?}
       - PORTAINER_HOSTNAME=${PORTAINER_HOSTNAME:?}
     networks:
+      - default
       - portainer-proxy
 
 volumes:
@@ -23,5 +24,6 @@ volumes:
   caddy_config:
 
 networks:
+  default:
   portainer-proxy:
     internal: true

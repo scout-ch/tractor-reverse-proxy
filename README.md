@@ -9,9 +9,11 @@ This repository is a helper setup to augment a Jelastic Docker native environmen
 
 Setup a new stack in Portainer, selecting a repository deployment with this repo.  
 Then setup the following environment variables:
-- `PORTAINER_HOST`: The hostname of the portainer instance, e.g. `portainer.yourdomain.com`
+- `PORTAINER_HOSTNAME`: The hostname of the portainer instance, e.g. `portainer.yourdomain.com`
 - `ACME_EMAIL`: The email address to use for Let's Encrypt certificate generation.
 
 ## Note about networks
 
 The compose file in this repository creates a new network called `portainer-proxy`. You then need to join the portainer service to this network through the UI.
+
+The `default` network is required to allow caddy to obtain TLS certificates.
