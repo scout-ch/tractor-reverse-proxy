@@ -1,0 +1,27 @@
+services:
+  caddy:
+    container_name: portainer-reverse-proxy
+    image: caddy:2.8.4@sha256:c6a5f2835a53fd9e2b5e0623dc7ebf0f89c163c21c05cbbc35e4ea31ff424417
+    restart: always
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      - ACME_EMAIL=${ACME_EMAIL:?}
+      - PORTAINER_HOSTNAME=${PORTAINER_HOSTNAME:?}
+    networks:
+      - portainer-proxy
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  portainer-proxy:
+    internal: true
