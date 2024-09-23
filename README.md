@@ -26,3 +26,19 @@ You can either set up the stack to poll for changes in the repository, or you ca
 
 Webhooks are more efficient, but required edit access to the repository.  
 Polling is easier to set up, but is less efficient and has a delay. You can always trigger a pull manually in the Portainer UI though.
+
+## Exposing services
+
+1. Set up DNS. It is important that the domain is ready before first deploying the service, as Let's Encrypt will try to verify the domain.
+    _TBD_ explain dns setup
+2. Add the following labels to the service in the `docker-compose.yml` file or in the Portainer UI:
+    ```yaml
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.my-service.rule=Host(`my-service.yourdomain.com`)"
+      - "traefik.http.routers.my-service.entrypoints=https"
+      - "traefik.http.services.my-service.loadbalancer.server.port=80"
+    ```
+    Make sure to replace `my-service` with the name of your service and `my-service.yourdomain.com` with your domain, as well as specifying the correct port.
+3. _TBD_ Explain joingin the network
+
