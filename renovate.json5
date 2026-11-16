@@ -1,26 +1,36 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:best-practices",
-    ":semanticCommits",
-    "group:allNonMajor",
-    ":enableVulnerabilityAlertsWithLabel(security)",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:best-practices',
+    ':semanticCommits',
+    'group:allNonMajor',
+    ':enableVulnerabilityAlertsWithLabel(security)',
   ],
-  "packageRules": [
+  packageRules: [
     {
-      "matchUpdateTypes": ["minor", "patch", "digest"],
-      "automerge": true
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'digest',
+      ],
+      automerge: true,
     },
     {
-      "matchUpdateTypes": ["digest"],
-      "minimumReleaseAge": "1 day"
-    }
+      matchUpdateTypes: [
+        'digest',
+      ],
+      minimumReleaseAge: '1 day',
+    },
   ],
-  "platformAutomerge": true,
-  "prHourlyLimit": 0,
-  "rebaseWhen": "behind-base-branch",
-  "labels": ["renovate-bot"],
-  "ignoreTests": true,
-  "osvVulnerabilityAlerts": true,
-  "dependencyDashboardOSVVulnerabilitySummary": "all"
+  platformAutomerge: true,
+  prHourlyLimit: 0,
+  rebaseWhen: 'behind-base-branch',
+  labels: [
+    'renovate-bot',
+  ],
+  ignoreTests: true,
+  osvVulnerabilityAlerts: true,
+  dependencyDashboard: {
+    osvVulnerabilitySummary: 'all',
+  },
 }
